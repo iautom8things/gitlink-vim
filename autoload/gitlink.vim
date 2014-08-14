@@ -24,5 +24,5 @@ function! gitlink#GitLink()
         let l:repoURL = substitute(l:remote,"^git:","https://","")
     endif
     let l:final = l:repoURL . "/tree/" . l:hash . l:file . "#L" . l:line
-    echo l:final
+    return l:final
 endfunction
