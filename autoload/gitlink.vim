@@ -13,7 +13,16 @@ function! gitlink#GitLink()
     let l:path = expand("%:p")
     let l:root = substitute(system("git rev-parse --show-toplevel"),"\n","","")
     let l:file= substitute(l:path,l:root,"","")
-    let l:repoURL = substitute(system("git config --get remote.origin.url"),".git\n","","")
+    let l:remote = substitute(system("git config --get remote.origin.url"), ".git\n", "", "")
+    if match(l:remote, '^https://') != -1
+        let l:repoURL = l:remote
+    elseif match(l:remote, '^git@') != -1
+        let l:repoURL = substitute(l:remote,"^git@","https://","")
+    elseif match(l:remote, '^ssh://') != -1
+        let l:repoURL = substitute(l:remote,"^ssh://","https://","")
+    elseif match(l:remote, '^git:') != -1
+        let l:repoURL = substitute(l:remote,"^git:","https://","")
+    endif
     let l:final = l:repoURL . "/tree/" . l:hash . l:file . "#L" . l:line
     echo l:final
 endfunction
