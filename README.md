@@ -41,6 +41,12 @@ You can add the following lines to your ```.vimrc``` file.
 
 - If you added the optional .vimrc lines
 
-    - ```:GitLink```
-    
-    - ```\gl```
+```
+:GitLink
+```
+
+Or ...
+
+```
+\gl
+```
