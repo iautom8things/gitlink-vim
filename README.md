@@ -14,6 +14,7 @@ When collaborating with your team, you may often want to reference a line of cod
 
 ##Known Issues
 It currently only supports repositories with remotes using ```https```, not those that use```ssh```.
+As written, it only works for Github and Gitlab.  Bitbucket is not supported.
 
 ##Installation
 
