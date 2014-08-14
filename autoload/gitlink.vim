@@ -7,7 +7,7 @@
 " License: MIT                                                               =
 "=============================================================================
 
-function! g:GitLink()
+function! gitlink#GitLink()
     let l:hash = substitute(system("git rev-parse HEAD"),"\n","","")
     let l:line = line('.')
     let l:path = expand("%:p")
