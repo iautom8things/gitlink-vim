@@ -6,13 +6,11 @@ Generate a link to the exact commit, file and line.
 When collaborating with your team, you may often want to reference a line of code.  Copy-and-pasting the line just doesn't work when context matters, plus you know the formating isn't going to be right, anyways!
 
 ##Example
-![screenshot]()
+![screenshot](https://raw.githubusercontent.com/mazubieta/gitlink-vim/master/docs/calling.png)
 
-```\gl```
+![screenshot](https://raw.githubusercontent.com/mazubieta/gitlink-vim/master/docs/executed.png)
 
-![screenshot]()
-
-![screenshot]()
+![screenshot](https://raw.githubusercontent.com/mazubieta/gitlink-vim/master/docs/inbrowser.png)
 
 ##Known Issues
 It currently only supports repositories with remotes using ```https```, not those that use```ssh```.
