@@ -14,6 +14,10 @@ function! gitlink#GitLink()
         let l:path = expand("%:p")
         let l:root = substitute(system("git rev-parse --show-toplevel"),"\n","","")
         let l:file= substitute(l:path,l:root,"","")
+        let l:isFileTracked = system("git ls-files " . l:path . " --error-unmatch")
+        if v:shell_error
+            return 'File is not tracked by repository'
+        endif
         let l:remote = substitute(system("git config --get remote.origin.url"), ".git\n", "", "")
         if match(l:remote, '^https://') != -1
             let l:repoURL = l:remote
