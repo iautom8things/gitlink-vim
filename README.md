@@ -29,16 +29,16 @@ You can add the following lines to your ```.vimrc``` file.
 
 - If you want to execute via command:
 
-    ```command GitLink :call gitlink#GitLink()```
+    ```command GitLink :echo gitlink#GitLink()```
 
 - If you want to execute via leader command
 
-    ```nmap <leader>gl :call gitlink#GitLink()<CR>```
+    ```nmap <leader>gl :echo gitlink#GitLink()<CR>```
 
 ##Usage
 - If you just autoload the script
 
-    ```:call #gitlink#GitLink()``` 
+    ```:echo #gitlink#GitLink()``` 
 
 - If you added the optional .vimrc lines
 
