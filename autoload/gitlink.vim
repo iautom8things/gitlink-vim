@@ -37,4 +37,3 @@ function! gitlink#GitLink()
     endif
     return ''
 endfunction
-t
