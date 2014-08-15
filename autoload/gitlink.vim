@@ -12,6 +12,10 @@ function! gitlink#GitLink()
     if l:hash != ''
         let l:line = line('.')
         let l:path = expand("%:p")
+        let l:diff = strlen(system("git diff " . l:path))
+        if l:diff
+            return 'Please commit and push changes to this file before attempting to link to it.'
+        endif
         let l:root = substitute(system("git rev-parse --show-toplevel"),"\n","","")
         let l:file= substitute(l:path,l:root,"","")
         let l:isFileTracked = system("git ls-files " . l:path . " --error-unmatch")
@@ -33,3 +37,4 @@ function! gitlink#GitLink()
     endif
     return ''
 endfunction
+t
