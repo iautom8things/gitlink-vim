@@ -29,25 +29,44 @@ You can add the following lines to your ```.vimrc``` file.
 
 - If you want to execute via command:
 
-    ```command GitLink :echo gitlink#GitLink()```
+  ```
+  command GitLink :echo gitlink#GitLink()
+  ```
 
-- If you want to execute via leader command
+- If you want to execute via leader command:
 
-    ```nmap <leader>gl :echo gitlink#GitLink()<CR>```
+  ```
+  nmap <leader>gl :echo gitlink#GitLink()<CR>
+  vmap <leader>gl :echo gitlink#GitLink(1)<CR>
+  ```
+
+- If you want to copy to the clipboard automatically:
+
+  ```
+  function! CopyGitLink(...) range
+    redir @+
+    silent echo gitlink#GitLink(get(a:, 1, 0))
+    redir END
+  endfunction
+  nmap <leader>gl :call CopyGitLink()<CR>
+  vmap <leader>gl :call CopyGitLink(1)<CR>
+  ```
 
 ## Usage
 - If you just autoload the script
 
-    ```:echo #gitlink#GitLink()``` 
+  ```
+  :echo gitlink#GitLink()
+  ```
 
 - If you added the optional .vimrc lines
 
-```
-:GitLink
-```
+  ```
+  :GitLink
+  ```
 
-Or ...
+  Or...
 
-```
-\gl
-```
+  ```
+  \gl
+  ```
