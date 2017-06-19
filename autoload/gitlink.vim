@@ -7,10 +7,10 @@
 " License: MIT                                                               =
 "=============================================================================
 
-function! gitlink#GitLink()
+function! gitlink#GitLink(...)
     let l:hash = substitute(system("git rev-parse HEAD 2>/dev/null"),"\n","","")
     if l:hash != ''
-        let l:line = line('.')
+        let l:line = get(a:, 1, 0) ? line("'<") . "-L" . line("'>") : line(".")
         let l:path = expand("%:p")
         let l:diff = strlen(system("git diff " . l:path))
         if l:diff
