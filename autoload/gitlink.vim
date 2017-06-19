@@ -26,7 +26,8 @@ function! gitlink#GitLink()
         if match(l:remote, '^https://') != -1
             let l:repoURL = l:remote
         elseif match(l:remote, '^git@') != -1
-            let l:repoURL = substitute(l:remote,"^git@","https://","")
+            let l:repoURL = substitute(l:remote,":","/","")
+            let l:repoURL = substitute(l:repoURL,"^git@","https://","")
         elseif match(l:remote, '^ssh://') != -1
             let l:repoURL = substitute(l:remote,"^ssh://","https://","")
         elseif match(l:remote, '^git:') != -1
