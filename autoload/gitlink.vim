@@ -22,7 +22,13 @@ function! gitlink#GitLink(...)
         if v:shell_error
             return 'File is not tracked by repository'
         endif
-        let l:remote = substitute(system("git config --get remote.origin.url"), ".git\n", "", "")
+        
+        let l:remote = system("git config --get remote.origin.url")
+        let l:remote = substitute(l:remote, ".git\n", "", "")
+        " on some vim + git installations there will be sporadic newlines that
+        " should be removed
+        let l:remote = substitute(l:remote, "\n", "", "g")
+        
         if match(l:remote, '^https://') != -1
             let l:repoURL = l:remote
         elseif match(l:remote, '^git@') != -1
